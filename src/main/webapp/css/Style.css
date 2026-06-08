@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* ==========================================
+   1. デザインシステム（共通変数）とフォント
+   ========================================== */
+:root {
+    --bg-color: #f1f5f9;         /* 落ち着いた薄いグレー */
+    --card-bg: #ffffff;         /* カードの白色 */
+    --text-main: #1e293b;       /* メインの文字色 */
+    --text-muted: #64748b;      /* 補足の文字色 */
+    --primary: #4f46e5;         /* インディゴブルー（ボタン等） */
+    --primary-hover: #4338ca;
+    
+    /* ステータス別のカラーバッジ用 */
+    --status-not-started: #94a3b8; /* 未着手（グレー） */
+    --status-in-progress: #0ea5e9; /* 進行中（水色） */
+    --status-completed: #10b981;   /* 完了（グリーン） */
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   2. レイアウト（コンテナ・カード）
+   ========================================== */
+.container {
+    width: 100%;
+    max-width: 650px;
+    background: var(--card-bg);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 16px; /* 滑らかな角丸 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 
+                0 4px 6px -4px rgba(0, 0, 0, 0.05); /* 柔らかな影 */
+    padding: 30px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    border-left: 4px solid var(--primary); /* 左側にアクセント線 */
+    padding-left: 10px;
+}
+
+/* ==========================================
+   3. フォーム・入力パーツ
+   ========================================== */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* スマホ表示にも強い縦並び */
+    gap: 8px;
+}
+
+label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+input[type="text"], 
+input[type="date"], 
+select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, 
+input[type="date"]:focus, 
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); /* フォーカス時の光彩効果 */
+}
+
+/* ==========================================
+   4. ボタン（ホバー時の滑らかな変化）
+   ========================================== */
+button, .btn-link {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px); /* 少し浮き上がる */
+}
+
+/* ==========================================
+   5. テーブル（スッキリとしたリスト表示）
+   ========================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 14px 10px;
+    text-align: left;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 2px solid #e2e8f0;
+}
+
+tr:hover td {
+    background-color: #f8fafc; /* 行にマウスを乗せたときのホバー効果 */
+}
+
+/* ==========================================
+   6. ステータスバッジ（色分け表示）
+   ========================================== */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 9999px; /* 丸薬風のバッジ */
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+}
+.badge-not-started { background-color: var(--status-not-started); }
+.badge-in-progress { background-color: var(--status-in-progress); }
+.badge-completed { background-color: var(--status-completed); }
